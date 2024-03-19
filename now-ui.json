@@ -1,0 +1,41 @@
+{
+	"components": {
+	    "x-902337-home-real3": {
+			"innerComponents": [],
+			"properties": [
+				{
+				  "name": "mytable",
+				  "label": "mytable",
+				  "description": "Name of the table to pick caller from",
+				  "readOnly": false,
+				  "fieldType": "string",
+				  "required": true,
+				  "defaultValue": "incident"
+				},
+				{
+				  "name": "myquery",
+				  "label": "myquery",
+				  "description": "The unique identifier for the record",
+				  "readOnly": false,
+				  "fieldType": "string",
+				  "required": true,
+				  "defaultValue": ""
+				}
+			],
+			"uiBuilder": {
+				"associatedTypes": ["global.core", "global.landing-page"],
+				"label": "A GRID 0319_office_0201",
+				"icon": "document-outline",
+				"description": "난 대학시절 제로까지 복전했단 사실",
+				"category": "primitives"
+			},
+			"actions": [
+                {
+                    "name": "EVENT_DEMO",
+                    "payload": []
+                }
+			]
+	    }
+	},
+	"scopeName": "x_902337_lhyuns_14"
+}

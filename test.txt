@@ -1,0 +1,107 @@
+sktop\서비스나우\custom-component\chase3\node_modules\@servicenow\now-loader\src\_now-loader.
+× ｢wdm｣: 
+ERROR in ../node_modules/@servicenow/now-button/src/_now-button-stateful.scss (../node_modules/css-loader!../node_modules/postcss-loader/src??ref--4-2!../node_modules/sass-loader/dist/cjs.js??ref--4-3!../node_modules/@servicenow/now-button/src/_now-button-stateful.scss)
+Module build failed (from ../node_modules/sass-loader/dist/cjs.js):
+SassError: Undefined variable: "$now-button--bare-primary--color--selected".
+        on line 43 of ../now-button/src/_now-button-stateful.scss
+>>                      color: RGB($now-button--bare_primary--color--selected);
+
+   --------------^
+
+ @ ../node_modules/@servicenow/now-button/src/_now-button-stateful.scss 2:21-180
+ @ ../node_modules/@servicenow/now-button/src/now-button-stateful.js
+ @ ../node_modules/babel-loader/lib??ref--20-0!../node_modules/source-map-loader!../node_modules/@servicenow/now-button/src/index.js
+ @ ../node_modules/@servicenow/now-button/src/index.js-exposed
+ @ ../src/x-902337-home-real3/actions.js
+ @ ../src/x-902337-home-real3/index.js
+ @ ./element.js
+ @ multi ../node_modules/error-overlay-webpack-plugin/lib/entry-basic.js ../node_modules/error-overlay-webpack-plugin/lib/entry-devserver.js? ../node_modules/@servicenow/cli-component-archetype-dev/node_modules/webpack-dev-server/client?http://localhost:8081 ../node_modules/webpack/hot/dev-server.js ./element.js
+
+ERROR in ../node_modules/@servicenow/now-button/src/_now-button.scss (../node_modules/css-loader!../node_modules/postcss-loader/src??ref--4-2!../node_modules/sass-loader/dist/cjs.js??ref--4-3!../node_modules/@servicenow/now-button/src/_now-button.scss)
+Module build failed (from ../node_modules/sass-loader/dist/cjs.js):
+SassError: Undefined variable: "$now-button--scale-size-inline".
+        on line 39 of ../now-button/src/_now-button.scss
+>>                      $now-button--scale-size-inline
+
+   ---^
+
+ @ ../node_modules/@servicenow/now-button/src/_now-button.scss 2:21-171
+ @ ../node_modules/@servicenow/now-button/src/now-button.js
+ @ ../node_modules/babel-loader/lib??ref--20-0!../node_modules/source-map-loader!../node_modules/@servicenow/now-button/src/index.js
+ @ ../node_modules/@servicenow/now-button/src/index.js-exposed
+ @ ../src/x-902337-home-real3/actions.js
+ @ ../src/x-902337-home-real3/index.js
+ @ ./element.js
+ @ multi ../node_modules/error-overlay-webpack-plugin/lib/entry-basic.js ../node_modules/error-overlay-webpack-plugin/lib/entry-devserver.js? ../node_modules/@servicenow/cli-component-archetype-dev/node_modules/webpack-dev-server/client?http://localhost:8081 ../node_modules/webpack/hot/dev-server.js ./element.js
+
+ERROR in ../node_modules/@servicenow/now-button/src/_now-button-circular.scss (../node_modules/css-loader!../node_modules/postcss-loader/src??ref--4-2!../node_modules/sass-loader/dist/cjs.js??ref--4-3!../node_modules/@servicenow/now-button/src/_now-button-circular.scss)
+Module build failed (from ../node_modules/sass-loader/dist/cjs.js):
+SassError: Undefined variable: "$now-global-drop-shadow--xl".
+        on line 47 of ../now-button/src/_now-button-circular.scss
+>>                      box-shadow: $now-global-drop-shadow--xl;
+
+   ---------------^
+
+ @ ../node_modules/@servicenow/now-button/src/_now-button-circular.scss 2:21-180
+ @ ../node_modules/@servicenow/now-button/src/now-button-circular.js
+ @ ../node_modules/babel-loader/lib??ref--20-0!../node_modules/source-map-loader!../node_modules/@servicenow/now-button/src/index.js
+ @ ../node_modules/@servicenow/now-button/src/index.js-exposed
+ @ ../src/x-902337-home-real3/actions.js
+ @ ../src/x-902337-home-real3/index.js
+ @ ./element.js
+ @ multi ../node_modules/error-overlay-webpack-plugin/lib/entry-basic.js ../node_modules/error-overlay-webpack-plugin/lib/entry-devserver.js? ../node_modules/@servicenow/cli-component-archetype-dev/node_modules/webpack-dev-server/client?http://localhost:8081 ../node_modules/webpack/hot/dev-server.js ./element.js
+
+ERROR in ../node_modules/@servicenow/now-tooltip/src/_now-tooltip.scss (../node_modules/css-loader!../node_modules/postcss-loader/src??ref--4-2!../node_modules/sass-loader/dist/cjs.js??ref--4-3!../node_modules/@servicenow/now-tooltip/src/_now-tooltip.scss)
+Module build failed (from ../node_modules/sass-loader/dist/cjs.js):
+SassError: Undefined variable: "$now-global-layer--tooltip".
+        on line 16 of ../now-tooltip/src/_now-tooltip.scss
+>>      z-index: $now-global-layer--tooltip;
+
+   ----------^
+
+ @ ../node_modules/@servicenow/now-tooltip/src/_now-tooltip.scss 2:21-172
+ @ ../node_modules/@servicenow/now-tooltip/src/now-tooltip.js
+ @ ../node_modules/babel-loader/lib??ref--20-0!../node_modules/source-map-loader!../node_modules/@servicenow/now-tooltip/src/index.js
+ @ ../node_modules/@servicenow/now-tooltip/src/index.js-exposed
+ @ ../node_modules/@servicenow/now-button/src/now-button-bare.js
+ @ ../node_modules/babel-loader/lib??ref--20-0!../node_modules/source-map-loader!../node_modules/@servicenow/now-button/src/index.js
+ @ ../node_modules/@servicenow/now-button/src/index.js-exposed
+ @ ../src/x-902337-home-real3/actions.js
+ @ ../src/x-902337-home-real3/index.js
+ @ ./element.js
+ @ multi ../node_modules/error-overlay-webpack-plugin/lib/entry-basic.js ../node_modules/error-overlay-webpack-plugin/lib/entry-devserver.js? ../node_modules/@servicenow/cli-component-archetype-dev/node_modules/webpack-dev-server/client?http://localhost:8081 ../node_modules/webpack/hot/dev-server.js ./element.js
+
+ERROR in ../node_modules/@servicenow/now-button/src/_now-button-bare.scss (../node_modules/css-loader!../node_modules/postcss-loader/src??ref--4-2!../node_modules/sass-loader/dist/cjs.js??ref--4-3!../node_modules/@servicenow/now-button/src/_now-button-bare.scss)
+Module build failed (from ../node_modules/sass-loader/dist/cjs.js):
+SassError: Undefined variable: "$now-global-scrollbar-width".
+        on line 17 of ../now-button/src/_now-button-bare.scss
+>> lc(100vw - #{$now-global-scrollbar-width});
+
+   ------------------------------------------^
+
+ @ ../node_modules/@servicenow/now-button/src/_now-button-bare.scss 2:21-176
+ @ ../node_modules/@servicenow/now-button/src/now-button-bare.js
+ @ ../node_modules/babel-loader/lib??ref--20-0!../node_modules/source-map-loader!../node_modules/@servicenow/now-button/src/index.js
+ @ ../node_modules/@servicenow/now-button/src/index.js-exposed
+ @ ../src/x-902337-home-real3/actions.js
+ @ ../src/x-902337-home-real3/index.js
+ @ ./element.js
+ @ multi ../node_modules/error-overlay-webpack-plugin/lib/entry-basic.js ../node_modules/error-overlay-webpack-plugin/lib/entry-devserver.js? ../node_modules/@servicenow/cli-component-archetype-dev/node_modules/webpack-dev-server/client?http://localhost:8081 ../node_modules/webpack/hot/dev-server.js ./element.js
+
+ERROR in ../node_modules/@servicenow/now-button/src/_now-button-iconic.scss (../node_modules/css-loader!../node_modules/postcss-loader/src??ref--4-2!../node_modules/sass-loader/dist/cjs.js??ref--4-3!../node_modules/@servicenow/now-button/src/_now-button-iconic.scss)
+Module build failed (from ../node_modules/sass-loader/dist/cjs.js):
+SassError: no mixin named now-mx-focus-ring--bare
+        on line 61 of ../now-button/src/_now-button-iconic.scss
+>>                      @include now-mx-focus-ring--bare;
+
+   ------------^
+
+ @ ../node_modules/@servicenow/now-button/src/_now-button-iconic.scss 2:21-178
+ @ ../node_modules/@servicenow/now-button/src/now-button-iconic.js
+ @ ../node_modules/babel-loader/lib??ref--20-0!../node_modules/source-map-loader!../node_modules/@servicenow/now-button/src/index.js
+ @ ../node_modules/@servicenow/now-button/src/index.js-exposed
+ @ ../src/x-902337-home-real3/actions.js
+ @ ../src/x-902337-home-real3/index.js
+ @ ./element.js
+ @ multi ../node_modules/error-overlay-webpack-plugin/lib/entry-basic.js ../node_modules/error-overlay-webpack-plugin/lib/entry-devserver.js? ../node_modules/@servicenow/cli-component-archetype-dev/node_modules/webpack-dev-server/client?http://localhost:8081 ../node_modules/webpack/hot/dev-server.js ./element.js
+i ｢wdm｣: Failed to compile.
