@@ -19,8 +19,8 @@ const EVENT_DEMO = 'EVENT_DEMO';
 const HEAD_QUATER = 'HEAD_QUATER';  
 const SOME_THING = 'SOME_THING'; 
 const MODIFY_ITEM_SUCCEEDED = 'MODIFY_ITEM_SUCCEEDED';  
-
-
+const MODIFY_ITEM_REQUESTED ='MODIFY_ITEM_REQUESTED'
+const UPDATE_ITEM_REQUESTED = 'UPDATE_ITEM_REQUESTED'
 // window.popUpUserList = (sysid_par, group_sysid_par, {dispatch}) => {
 // 	dispatch('EVENT_DEMO');
 // 	debugger
@@ -140,14 +140,14 @@ export default {
 				grid.addPopupMenu("menu1", menu);
 
 				grid.onMenuItemClicked = function(grid, data, index) {	  
-					alert(data.label)
+					//alert(data.label)
 					// grid.setValue(index.dataRow, 'priority', data.label);
 					// grid.commit();
 					// grid.setValue(index.dataRow, index.fieldIndex, data.label);
 					// debugger
 			  	};
 				grid.onCellDblClicked = function (grid, clickData) {
-				alert("onCellDblClicked: " + JSON.stringify(clickData));
+				//alert("onCellDblClicked: " + JSON.stringify(clickData));
 				}
 				grid.onCellClicked = function (grid, clickData) {
 					var sysid_par = provider.getValues(clickData.dataRow)[1];
@@ -163,6 +163,36 @@ export default {
 				}
 				provider.setRows(rows);
 
+				
+				grid.onEditCommit = function (grid_par, index, oldValue, newValue) {
+					if (newValue === '') {
+						return false;
+					}
+					
+				   let selectedRows = grid.getSelectedRows().length;
+			   
+					var sysid_par = provider.getValues(grid.getSelectedRows()[0])[1];
+				   var sysid_par_num = grid.getSelectedRows();
+				   if(selectedRows == 1){
+					   console.log(sysid_par);
+					   console.log(sysid_par_num[0], index.fieldIndex)
+					   grid.setValue(sysid_par_num[0], 'short_description', newValue);
+					   grid.commit();
+					   provider.setValue(sysid_par_num[0], index.fieldIndex, newValue)
+				   }
+				   else{		
+						   var sysid_par_array = [];
+						 for(var i = 0 ; selectedRows > i ;i++){
+						   console.log(sysid_par_num[i], index.fieldIndex)
+						   grid.setValue(sysid_par_num[i], 'short_description', newValue);
+						   grid.commit();
+						   provider.setValue(sysid_par_num[i], index.fieldIndex, newValue)
+						}
+	   
+				   }
+				   
+	   
+			   }
 				// var dataPerPage = 8; // 한 페이지에 나타낼 데이터 수
 				// grid.setPaging(true, dataPerPage);
 				// debugger				
@@ -246,41 +276,98 @@ export default {
 				console.log(newValues)
 				var result = confirm("데이터 수정을 진행하시겠습니까");
 				if(result){
-					dispatch(MODIFY_ITEM_SUCCEEDED, {sysidArr : sys_id_arr, newValueArr : newValues});
+					for( i= 0 ; i < sys_id_arr.length ; i++){
+						console.log("ㅗㅑ")
+						dispatch(MODIFY_ITEM_REQUESTED, {sys_id : sys_id_arr[i], short_description : newValues[i]});
+					}
 				}else{
 				
 				}
 			}
 		} ,
-		[MODIFY_ITEM_SUCCEEDED]: ({action, updateState, dispatch}) => {
-			const {
-				payload: {result = []}
-			} = action;
-			console.log("back in black")
-			console.log("MOCDIFY:", action);
-			debugger
-			updateState({
-				path: 'rows',
-				operation: 'set',
-				value: result.map(item => ({
-					number: item.number.display_value,
-					sys_id: item.sys_id.value,
-					opened: item.opened_at.display_value,
-					short_description: item.short_description.display_value,
-					caller_name: item.caller_id.display_value,
-					caller_sys_id: item.caller_id.value,
-					priority: item.priority.display_value,
-					state: item.state.display_value,
-					category: item.category.display_value,
-					channel: item.contact_type.display_value,
-					assignment_group_sys_id: item.assignment_group.value,
-					assignment_group_name: item.assignment_group.display_value,
-					assigned_to_name: item.assigned_to.display_value,
-					assigned_to_sys_id: item.assigned_to.value
-				}))
+		// [MODIFY_ITEM_REQUESTED]: ({action, updateState, dispatch}) => {
+		// 	const {
+		// 		payload: {result = []}
+		// 	} = action;
+		// 	console.log("back in black")
+		// 	console.log("MOCDIFY:", action);
+		// 	debugger
+		// 	updateState({
+		// 		path: 'rows',
+		// 		operation: 'set',
+		// 		value: result.map(item => ({
+		// 			number: item.number.display_value,
+		// 			sys_id: item.sys_id.value,
+		// 			opened: item.opened_at.display_value,
+		// 			short_description: item.short_description.display_value,
+		// 			caller_name: item.caller_id.display_value,
+		// 			caller_sys_id: item.caller_id.value,
+		// 			priority: item.priority.display_value,
+		// 			state: item.state.display_value,
+		// 			category: item.category.display_value,
+		// 			channel: item.contact_type.display_value,
+		// 			assignment_group_sys_id: item.assignment_group.value,
+		// 			assignment_group_name: item.assignment_group.display_value,
+		// 			assigned_to_name: item.assigned_to.display_value,
+		// 			assigned_to_sys_id: item.assigned_to.value
+		// 		}))
+		// 	});
+		// 	dispatch(REAL_LOAD_PR);
+		// },		
+
+		[MODIFY_ITEM_REQUESTED]: ({action, updateState, state, dispatch}) => {
+			const {payload} = action;
+			console.log("업데이트를 하고 싶다고요")
+			console.log(action)
+			console.log(payload)
+			console.log(state)
+			console.log(state.items)
+			console.log(updateState)
+			
+			
+			// updateState({
+			// 	row: state.row.map(row_single =>
+			// 		row_single.sys_id === payload.sys_id
+			// 			? {
+			// 				...row_single,
+			// 				...action.payload
+			// 			  }
+			// 			: {...row_single}
+			// 	),				
+			// });
+
+
+			// updateState({
+			// 	items: state.items.map(item =>
+			// 		item.itemId === payload.itemId
+			// 			? {
+			// 				...item,
+			// 				...action.payload
+			// 			  }
+			// 			: {...item}
+			// 	),				
+			// });
+
+
+			console.log("무슨일이 있던거지")
+			console.log(action)
+			console.log(payload)
+			console.log(state)
+			console.log(state.items)
+			console.log(updateState)
+			dispatch(UPDATE_ITEM_REQUESTED, {
+				data: {...payload},
+				id: payload.sys_id
 			});
-			dispatch(REAL_LOAD_PR);
-		},		
+
+		},
+		[UPDATE_ITEM_REQUESTED]: createHttpEffect('/api/now/table/incident/:id', {
+			method: 'PUT',
+			dataParam: 'data',
+			pathParams: 'id'
+		}),
+
+
 		'NOW_BUTTON#CLICKED': ({action, dispatch }) => {
 			console.log(action);
 			console.log('firing EVENT_FIRED');

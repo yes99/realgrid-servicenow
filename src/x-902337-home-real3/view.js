@@ -24,6 +24,10 @@ export default (state, {dispatch, updateProperties}) => {
 				}}/></div>
 			<div><button>click me</button></div>
 			<div id='realgrid'></div>
+
+			
+
+
 			<now-button
     id="button1"
     label="Fire Event 1"
@@ -46,7 +50,11 @@ export default (state, {dispatch, updateProperties}) => {
 	on-click= {()=> dispatch('SOME_THING', {param:'save'})}
 
 ></now-button>
+
+
 		</main>
+
+		
 	);
 };
 //var realGrid2Lic = 'upVcPE+wPOmtLjqyBIh9RkM/nBOseBrflwxYpzGZyYm9cY8amGDkiHqyYT2U1Yh3Dufv8SUhNy4cHDDEc2etng==';ddd

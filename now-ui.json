@@ -24,9 +24,9 @@
 			],
 			"uiBuilder": {
 				"associatedTypes": ["global.core", "global.landing-page"],
-				"label": "A GRID 0319_office_0201",
+				"label": "A GRID 0321_office",
 				"icon": "document-outline",
-				"description": "난 대학시절 제로까지 복전했단 사실",
+				"description": "여기까지 일단 수정까지 성공했다는거다",
 				"category": "primitives"
 			},
 			"actions": [
