@@ -139,6 +139,9 @@ export default {
 
 				grid.addPopupMenu("menu1", menu);
 
+
+
+
 				grid.onMenuItemClicked = function(grid, data, index) {	  
 					//alert(data.label)
 					// grid.setValue(index.dataRow, 'priority', data.label);
@@ -195,7 +198,124 @@ export default {
 			   }
 				// var dataPerPage = 8; // 한 페이지에 나타낼 데이터 수
 				// grid.setPaging(true, dataPerPage);
-				// debugger				
+				// debugger			
+
+				console.log("fffffffffffffff")
+				console.log(provider.getRowCount())
+				var totalData = provider.getRowCount();    // 총 데이터 수
+				var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
+				var pageCount = 3;        // 한 화면에 나타낼 페이지 수
+				setPageSelbox(totalData, dataPerPage, grid, provider);
+				grid.setPaging(true, dataPerPage);
+				paging(totalData, dataPerPage, pageCount, 1, grid, provider);
+
+				
+								//페이지네이션 생성 및 이동 처리
+				
+
+								function paging(totalData, dataPerPage, pageCount, currentPage) {
+									console.log('currentPage : ' + currentPage);
+								
+									var totalPage = Math.ceil(totalData / dataPerPage); // 총 페이지 수
+									var pageGroup = Math.ceil(currentPage / pageCount); // 페이지 그룹
+								
+									console.log('pageGroup : ' + pageGroup);
+								
+									var last = pageGroup * pageCount; // 화면에 보여질 마지막 페이지 번호
+									if (last > totalPage) last = totalPage;
+									var first = last - (pageCount - 1) < 1 ? 1 : last - (pageCount - 1); // 화면에 보여질 첫번째 페이지 번호
+									var next = last + 1;
+									var prev = first - 1;
+								
+									console.log('last : ' + last);
+									console.log('first : ' + first);
+									console.log('next : ' + next);
+									console.log('prev : ' + prev);
+								
+									var pagingElement =  host.shadowRoot.querySelector('paging');
+								
+									var html = '';
+								
+									if (prev === 0) {
+										html += "<a href='#' id='first' class='disabled'>|<</a> ";
+										html += "<a href='#' id='prev' class='disabled'><</a> ";
+									} else {
+										html += "<a href='#' id='first'>|<</a> ";
+										html += "<a href='#' id='prev'><</a> ";
+									}
+								
+									for (var i = first; i <= last; i++) {
+										html += "<a href='#' style='width: 50px' id='" + i + "'>" + i + "</a> ";
+									}
+								
+									if (last < totalPage) {
+										html += "<a href='#' id='next'>></a>";
+										html += "<a href='#' id='last'>>|</a>";
+									} else {
+										html += "<a href='#' id='next' class='disabled'>></a>";
+										html += "<a href='#' id='last' class='disabled'>>|</a>";
+									}
+
+									console.log(html)
+
+									pagingElement.innerHTML = html; // 페이지 목록 생성
+								
+									var links = pagingElement.getElementsByTagName('a');
+									for (var link of links) {
+										link.style.color = 'black';
+										link.style.paddingLeft = '10px';
+										if (link.id == currentPage) {
+											link.style.textDecoration = 'none';
+											link.style.color = 'red';
+											link.style.fontWeight = 'bold';
+										}
+										link.addEventListener('click', function () {
+											var selectedPage = this.text;
+								
+											if (this.id === 'first') selectedPage = 1;
+											if (this.id === 'next') selectedPage = next;
+											if (this.id === 'prev') selectedPage = prev < 1 ? 1 : prev;
+											if (this.id === 'last') selectedPage = totalPage;
+								
+											// Assuming grid.setPage and paging are accessible
+											// grid.setPage(selectedPage - 1);
+											paging(totalData, dataPerPage, pageCount, selectedPage);
+										});
+									}
+								}
+//host.shadowRoot.querySelector
+
+
+
+								
+
+function setPageSelbox(totalData, dataPerPage,gridView,dp) {
+    //alert("setPageSelbox");
+    var totalPage = Math.ceil(totalData / dataPerPage); // 총 페이지 수
+
+    var selBox = host.shadowRoot.querySelector('#selBox'); // jQuery 대신 순수 JavaScript 사용
+    for (var i = 1; totalPage >= i; i++) {
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        selBox.appendChild(opt);
+    }
+	console.log(opt)
+    selBox.addEventListener('change', function() {
+		//alert("this.value")
+		//alert(this.value)
+        var totalData = dp.getRowCount(); // 총 데이터 수
+        var dataPerPage = 8; // 한 페이지에 나타낼 데이터 수
+        var pageCount = 3; // 한 화면에 나타낼 페이지 수
+        var selectedPage = this.value;
+
+        gridView.setPage(selectedPage - 1);
+        paging(totalData, dataPerPage, pageCount, selectedPage,gridView);
+    });
+}
+
+
+	
 			}
 		},
 		[GRID_DATA_SEARCHED]: ({action, updateState, dispatch, state}) => {
@@ -219,6 +339,14 @@ export default {
 				payload: {result = []}
 			} = action;
 			console.log("Result:", result);
+			console.log("fffffffffffffff")
+				console.log(provider.getRowCount())
+				var totalData = provider.getRowCount();    // 총 데이터 수
+				var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
+				var pageCount = 3;        // 한 화면에 나타낼 페이지 수
+				setPageSelbox(totalData, dataPerPage, grid, provider);
+				grid.setPaging(true, dataPerPage);
+				paging(totalData, dataPerPage, pageCount, 1, grid, provider);
 			debugger
 			updateState({
 				path: 'rows',
@@ -251,6 +379,7 @@ export default {
 		},
 		[EVENT_DEMO]: () => {
 			console.log("Result:", result);
+
 			debugger
 		},	
 		[SOME_THING]: ({dispatch, action, state}) =>{
@@ -259,8 +388,8 @@ export default {
 			console.log({value : action.payload.param});
 			if(action.payload.param == 'save'){
 				console.log("아따 찌바브거, 시작하자wwwwwwwwwwwwww")
-				//var dp = new RealGrid.LocalDataProvider(true);
-				//console.log(dp)
+				//var provider = new RealGrid.LocalDataProvider(true);
+				//console.log(provider)
 
 				var state_arr = []
 				var sys_id_arr = []

@@ -1,6 +1,7 @@
 import '@servicenow/now-button';
 import '@servicenow/now-loader';
 
+
 export default (state, {dispatch, updateProperties}) => {
 	const ENTER_KEY_CODE = 13;
 	const inputValue = '';
@@ -12,7 +13,8 @@ export default (state, {dispatch, updateProperties}) => {
 	return (
 		<main className="now-checklist">
 		<script>var realGrid2Lic = 'upVcPE+wPOmtLjqyBIh9RkM/nBOseBrflwxYpzGZyYl7CwX6ItpP+xy/pIW0HghIJKTWpoOpNFnkmhX0fXje4w7n7/ElITcu5mG+2R8atxo='</script>
-			<div><input
+			<div>
+				<input
 				placeholder="What needs to be done?"
 				autoFocus
 				value={inputValue}
@@ -21,42 +23,65 @@ export default (state, {dispatch, updateProperties}) => {
 					if (keyCode === ENTER_KEY_CODE && inputValue) {
 						dispatch(GRID_DATA_SEARCHED, {inputValue});
 					}
-				}}/></div>
+				}}/>
+			</div>
 			<div><button>click me</button></div>
-			<div id='realgrid'></div>
+			
+			<div class="toolbar">
+		    	<div
+		    	  id="paging"
+		    	></div>
+		    	<div
+		    	  id="wrapper"
+
+		    	>
+		    	  <select name="selBox" id="selBox"></select>
+		    	  <label for="selBox">Page</label>
+		    	</div>
+			</div>
+
+
+
+
 
 			
-
+			
+			<div id='realgrid'></div>
+			<now-button
+			    id="button1"
+			    label="Fire Event 1"
+			    variant="secondary"
+			    size="md"
+			    icon="fire-fill"
+			    configAria={{ "button": { "aria-label": "Fire Event 1" } }}
+			    tooltipContent="Fire an event"
+				on-click= {()=> dispatch('SOME_THING', {param:'test'})}
+			></now-button>
 
 			<now-button
-    id="button1"
-    label="Fire Event 1"
-    variant="secondary"
-    size="md"
-    icon="fire-fill"
-    configAria={{ "button": { "aria-label": "Fire Event 1" } }}
-    tooltipContent="Fire an event"
-	on-click= {()=> dispatch('SOME_THING', {param:'test'})}
-></now-button>
+			    id="button2"
+			    label="Fire Event 2"
+			    variant="secondary"
+			    size="md"
+			    icon="fire-fill"
+			    configAria={{ "button": { "aria-label": "Fire Event 2" } }}
+			    tooltipContent="Fire another event"
+				on-click= {()=> dispatch('SOME_THING', {param:'save'})}
 
-<now-button
-    id="button2"
-    label="Fire Event 2"
-    variant="secondary"
-    size="md"
-    icon="fire-fill"
-    configAria={{ "button": { "aria-label": "Fire Event 2" } }}
-    tooltipContent="Fire another event"
-	on-click= {()=> dispatch('SOME_THING', {param:'save'})}
+			></now-button>
+			{/* <now-label id="paging"></now-label>
+			<now-select name="selBox" id="selBox"></now-select>
+			<now-label for="selBox">Page</now-label>
 
-></now-button>
-
-
+			 */}
 		</main>
 
 		
 	);
 };
+
+
+
 //var realGrid2Lic = 'upVcPE+wPOmtLjqyBIh9RkM/nBOseBrflwxYpzGZyYm9cY8amGDkiHqyYT2U1Yh3Dufv8SUhNy4cHDDEc2etng==';ddd
 
 //<script>var realGrid2Lic = 'upVcPE+wPOmtLjqyBIh9RkM/nBOseBrflwxYpzGZyYl7CwX6ItpP+1nkO6QZ3yCAJKTWpoOpNFnkmhX0fXje4w7n7/ElITcuG9J4R7ssMRE='</script>
